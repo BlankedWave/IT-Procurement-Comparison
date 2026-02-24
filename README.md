@@ -113,10 +113,3 @@ It is intended for **internal use only**.
 ## 🔒 Disclaimer
 
 This tool is built specifically to support procurement workflow at TMS Sdn Bhd and is not intended for commercial distribution.
-
----
-
-## 👨‍💻 Author
-
-**Muhammad Aqil Ismail**
-IT Support / Software & AI Engineer
