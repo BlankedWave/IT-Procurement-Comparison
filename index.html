@@ -282,10 +282,14 @@
 
                 rows.push([
                     { content: index + 1, styles: { halign: 'center', valign: 'top' } },
+                    // Kita kekalkan \n\nTOTAL supaya "TOTAL" berada di bawah item description
                     { content: `${company.toUpperCase()}\n${item}\n\nTOTAL`, styles: { valign: 'top' } },
-                    { content: `\n${price.toLocaleString('en-MY', { minimumFractionDigits: 2 })}`, styles: { halign: 'right', valign: 'top' } },
-                    { content: `\n${qty}`, styles: { halign: 'center', valign: 'top' } },
-                    { content: `\n\n\n${totalStr}`, styles: { halign: 'right', valign: 'top' } }
+                    // Buang \n di sini
+                    { content: `${price.toLocaleString('en-MY', { minimumFractionDigits: 2 })}`, styles: { halign: 'right', valign: 'top' } },
+                    // Buang \n di sini
+                    { content: `${qty}`, styles: { halign: 'center', valign: 'top' } },
+                    // Buang \n\n\n di sini
+                    { content: `${totalStr}`, styles: { halign: 'right', valign: 'bottom' } } 
                 ]);
             });
 
@@ -305,7 +309,7 @@
                 },
                 styles: { 
                     fontSize: 9, 
-                    cellPadding: 4, 
+                    cellPadding: 4, // Jarak ini akan memastikan teks tidak 'terkena' garisan border
                     textColor: [0, 0, 0],
                     lineColor: [0, 0, 0],
                     lineWidth: 0.1
@@ -315,7 +319,7 @@
                     1: { cellWidth: 'auto' },
                     2: { cellWidth: 32 },
                     3: { cellWidth: 28 },
-                    4: { cellWidth: 42, fontStyle: 'bold' }
+                    4: { cellWidth: 42, fontStyle: 'bold', halign: 'right', valign: 'bottom' } // <--- Tukar ke valign: 'bottom'
                 },
                 didDrawCell: (data) => {
                     if (data.section === 'body' && data.column.index === 1) {
