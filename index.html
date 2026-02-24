@@ -74,19 +74,20 @@
                 <h2 class="text-xl font-bold uppercase tracking-tight text-slate-800">Report Details</h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8"> -->
+            <div class="grid grid-cols-1 gap-8">
                <div class="space-y-2">
                     <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">Item Name</label>
                     <input type="text" id="reportTitle" oninput="syncItemNames()" placeholder="INSERT ITEM NAME" 
                            class="w-full p-3 bg-slate-50 border border-slate-200 rounded text-sm font-medium" value="">
                 </div>
-                <div class="space-y-2">
+                <!-- <div class="space-y-2">
                     <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">Prepared By</label>
                     <select id="preparedBy" class="w-full p-3 bg-slate-50 border border-slate-200 rounded text-sm font-medium">
                         <option value="">Select IT Support...</option>
                         <option value="Muhammad Aqil">Muhammad Aqil</option>
                     </select>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -242,7 +243,7 @@
             const doc = new jsPDF('p', 'mm', 'a4');
             
             const reportTitle = document.getElementById('reportTitle').value || 'UNSPECIFIED ITEM';
-            const preparedBy = document.getElementById('preparedBy').value || 'N/A';
+            // const preparedBy = document.getElementById('preparedBy').value || 'N/A';
             const dateStr = new Date().toLocaleDateString('en-MY', { day: '2-digit', month: '2-digit', year: 'numeric' });
             
             doc.setFontSize(18);
@@ -370,15 +371,15 @@
                 finalY += 25;
             }
 
-            doc.setFontSize(10);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(0);
-            doc.text(`PREPARED BY: ${preparedBy.toUpperCase()}`, 14, finalY);
+            // doc.setFontSize(10);
+            // doc.setFont('helvetica', 'bold');
+            // doc.setTextColor(0);
+            // doc.text(`PREPARED BY: ${preparedBy.toUpperCase()}`, 14, finalY);
             
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(8);
-            doc.setTextColor(100);
-            doc.text('IT Support Engineer', 14, finalY + 5);
+            // doc.setFont('helvetica', 'normal');
+            // doc.setFontSize(8);
+            // doc.setTextColor(100);
+            // doc.text('IT Support Engineer', 14, finalY + 5);
 
             doc.save(`Price Comparison ${reportTitle.replace(/_/g, ' ') || 'Report'}.pdf`);
         }
